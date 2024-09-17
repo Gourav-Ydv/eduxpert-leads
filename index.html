@@ -232,8 +232,7 @@
         const result = await response.text();
         // Track form submission with Meta Pixel
       fbq('track', 'Form Submitted', {
-        content_name: document.getElementById('course').value,
-        content_category: 'Lead Form Submission'
+        content_name: formData.course
       });
         document.getElementById('response').textContent = `Thank you, ${formData.name}! For your interest in ${formData.course}. We will review your information and contact you shortly`;
       } catch (error) {
