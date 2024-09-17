@@ -231,7 +231,7 @@
         });
         const result = await response.text();
         // Track form submission with Meta Pixel
-      fbq('track', 'Lead', {
+      fbq('track', 'Form Submitted', {
         content_name: document.getElementById('course').value,
         content_category: 'Lead Form Submission'
       });
