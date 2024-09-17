@@ -209,11 +209,7 @@
 
       if (!isValid) return; // Stop submission if validation fails
 
-      // Track form submission with Meta Pixel
-      fbq('track', 'Lead', {
-        content_name: document.getElementById('course').value,
-        content_category: 'Lead Form Submission'
-      });
+      
 
       // Disable form
       leadForm.querySelectorAll('input, button, select').forEach(element => {
@@ -233,8 +229,12 @@
           method: 'POST',
           body: JSON.stringify(formData)
         });
-        console.log(formData);
         const result = await response.text();
+        // Track form submission with Meta Pixel
+      fbq('track', 'Lead', {
+        content_name: document.getElementById('course').value,
+        content_category: 'Lead Form Submission'
+      });
         document.getElementById('response').textContent = `Thank you, ${formData.name}! For your interest in ${formData.course}. We will review your information and contact you shortly`;
       } catch (error) {
         document.getElementById('response').textContent = 'Submission failed: ' + error.message;
